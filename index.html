@@ -10,6 +10,10 @@
       justify-content: center;
       align-items: center;
     }
+    #qrcode {
+      width: 100%;
+      height: 100%;
+    }
   </style>
 </head>
 <body>
@@ -21,10 +25,14 @@
       qr.addData(qrCodeData);
       qr.make();
       const img = qr.createImgTag(5, 0);
-      document.body.innerHTML = img;
+      document.body.innerHTML = `<div id="qrcode">${img}</div>`;
     }
 
     window.addEventListener('load', function () {
+      generateQRCode();
+    });
+
+    window.addEventListener('resize', function () {
       generateQRCode();
     });
   </script>
