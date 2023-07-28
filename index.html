@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>QR Code Generator</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  <script src="qrcode-generator.min.js"></script>
+  <script>
+    function generateQRCode() {
+      const qrCodeData = window.location.href.split('/').pop();
+      const qr = qrcode(0, 'M');
+      qr.addData(qrCodeData);
+      qr.make();
+      const img = qr.createImgTag(5, 0);
+      document.body.innerHTML = img;
+    }
+
+    window.addEventListener('load', function () {
+      generateQRCode();
+    });
+  </script>
+</body>
+</html>
